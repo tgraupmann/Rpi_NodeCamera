@@ -59,3 +59,5 @@ npm install express
 ```
 npm install pi-camera
 ```
+
+* [PI camera usage](https://www.raspberrypi.org/documentation/accessories/camera.html)
