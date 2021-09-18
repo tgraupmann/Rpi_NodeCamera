@@ -6,8 +6,8 @@ const PiCamera = require('pi-camera');
 const { nextTick } = require('process');
 const myCamera = new PiCamera({
   mode: 'photo',
-  width: 3840,
-  height: 2160,
+  width: 4056,
+  height: 3040,
   nopreview: true,
   t: 20, //Small delay to take next picture
 });
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
           </style>
         </head>
         <body>
-          <img class="section" id="imgCamera" height="2160">
+          <img class="section" id="imgCamera" height="3040">
           <div class="section info">
             <span>RPI Camera</span>
             <span id="labelTime">${timestamp}</span>
