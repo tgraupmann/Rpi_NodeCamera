@@ -20,6 +20,11 @@ sudo apt install nodejs
 
 * [Visual Studio Code on Raspberry Pi](https://code.visualstudio.com/docs/setup/raspberry-pi)
 
+```
+sudo apt update
+sudo apt install code
+```
+
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 
 ```
