@@ -5,9 +5,10 @@ const port = 80
 const PiCamera = require('pi-camera');
 const myCamera = new PiCamera({
   mode: 'photo',
-  width: 640,
-  height: 480,
+  width: 1920,
+  height: 1080,
   nopreview: true,
+  t: 20, //Small delay to take next picture
 });
 
 app.get('/', (req, res) => {
@@ -22,11 +23,11 @@ app.get('/', (req, res) => {
           <title>$timestamp</title>
         </head>
         <body>
-          <img src="${result}">
+          <img width="1920" src="${result}">
           <script>
             setTimeout(function() {
               location.reload();
-            }, 1000);
+            }, 50);
           </script>
         </body>
       </html>
@@ -34,7 +35,7 @@ app.get('/', (req, res) => {
   })
   .catch((error) => {
      // Handle your error
-     res.send('There was an error! ' + error)
+     console.log('had an error', error);
      res.send(`
      <html>
        <head>
