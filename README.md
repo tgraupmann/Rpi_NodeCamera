@@ -15,6 +15,14 @@ sudo node app.js
 sudo nodemon app.js
 ```
 
+* Open the server in the browser at `http://THE_IP_ADDRESS`.
+
+* You can find the `IP` address by running a command in the terminal.
+
+```
+ifconfig
+```
+
 ## Required Hardware
 
 * [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/)
