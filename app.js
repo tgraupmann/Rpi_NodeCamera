@@ -35,6 +35,21 @@ app.get('/', (req, res) => {
   .catch((error) => {
      // Handle your error
      res.send('There was an error! ' + error)
+     res.send(`
+     <html>
+       <head>
+         <title>$timestamp</title>
+       </head>
+       <body>
+         <div>${error}</div>
+         <script>
+           setTimeout(function() {
+             location.reload();
+           }, 5000);
+         </script>
+       </body>
+     </html>
+     `);
   });
 })
 
