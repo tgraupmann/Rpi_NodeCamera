@@ -55,7 +55,7 @@ sudo npm install -g nodemon
 npm install express
 ```
 
-* [pi-camera](https://www.npmjs.com/package/pi-camera)
+* [pi-camera](https://www.npmjs.com/package/pi-camera) - [Source](https://github.com/stetsmando/pi-camera)
 ```
 npm install pi-camera
 ```
