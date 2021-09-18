@@ -15,9 +15,9 @@ sudo node app.js
 sudo nodemon app.js
 ```
 
-* Open the server in the browser at `http://THE_IP_ADDRESS`.
+* Open the server in the browser at `http://IP_ADDRESS`.
 
-* You can find the `IP` address by running a command in the terminal.
+* You can find the `IP_ADDRESS` by running a command in the terminal.
 
 ```
 ifconfig
