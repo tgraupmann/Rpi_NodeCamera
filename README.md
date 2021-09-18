@@ -59,7 +59,7 @@ sudo shutdown -r now
 
 ## Required Hardware
 
-* [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/)
+* [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/) - Max Resolution (4056x3040)
 
 * [HQ Setup Video](https://www.youtube.com/watch?v=3S1MQM8B-DU)
 
