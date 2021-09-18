@@ -35,10 +35,13 @@ app.get('/', (req, res) => {
                 imgCamera.src=data;
               }
             }
-            setInterval(function() {
-              fetch('/camera')
-              .then(response => handleResponse(response))
-            }, 500);
+            let refreshCamera = async function() {
+              while (true) {
+                let response = await fetch('/camera');
+                handleResponse(response);
+              }
+            };
+            refreshCamera();
           </script>
         </body>
       </html>
