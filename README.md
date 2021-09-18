@@ -91,6 +91,8 @@ sudo npm install -g nodemon
 
 ## Dependencies
 
+* Run these commands within the cloned repository.
+
 * [ExpressJS](https://expressjs.com/en/starter/installing.html)
 
 ```
