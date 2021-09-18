@@ -1,6 +1,20 @@
 # Rpi_NodeCamera
 A NodeJS application for capturing and rendering camera images without saving to disk
 
+## Running
+
+* Start with NodeJS
+
+```
+sudo node app.js
+```
+
+* Launch and reload if any files change during development
+
+```
+sudo nodemon app.js
+```
+
 ## Required Hardware
 
 * [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/)
