@@ -28,7 +28,7 @@ sudo apt install code
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 
 ```
-npm install -g nodemon
+sudo npm install -g nodemon
 ```
 
 ## Dependencies
