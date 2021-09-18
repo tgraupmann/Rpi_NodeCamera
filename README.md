@@ -5,7 +5,7 @@ A NodeJS application for capturing and rendering camera images without saving to
 
 * [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/)
 
-* {Raspberry PI 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) - More power to handle all the pixels
+* [Raspberry PI 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) - More power to handle all the pixels
 
 ## Required Software
 
