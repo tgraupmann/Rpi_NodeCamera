@@ -8,49 +8,53 @@ const myCamera = new PiCamera({
   width: 1920,
   height: 1080,
   nopreview: true,
-  t: 20, //Small delay to take next picture
+  t: 15, //Small delay to take next picture
 });
 
 app.get('/', (req, res) => {
+  const timestamp = new Date();
+  res.send(`
+      <html>
+        <head>
+          <title>RPI Camera</title>
+        </head>
+        <body>
+          <div>
+            <span>RPI Camera</span>
+            <span id="labelTime">${timestamp}</span>
+          </div>
+          <img id="imgCamera" width="1920">
+          <script>
+            async function handleResponse(response) {
+              const data = await response.text();
+              //console.log(data);
+              if (!data.startsWith('ERROR')) {
+                labelTime.innerText = new Date().toLocaleString();
+                imgCamera.src=data;
+              }
+            }
+            setInterval(function() {
+              fetch('/camera')
+              .then(response => handleResponse(response))
+            }, 500);
+          </script>
+        </body>
+      </html>
+      `);  
+})
+
+app.get('/camera', (req, res) => {
   const timestamp = new Date();
   console.log(timestamp, 'Taking a picture!');
   myCamera.snapDataUrl()
   .then((result) => {
     // Your picture was captured
-    res.send(`
-      <html>
-        <head>
-          <title>$timestamp</title>
-        </head>
-        <body>
-          <img width="1920" src="${result}">
-          <script>
-            setTimeout(function() {
-              location.reload();
-            }, 50);
-          </script>
-        </body>
-      </html>
-      `);
+    res.send(result);
   })
   .catch((error) => {
      // Handle your error
      console.log('had an error', error);
-     res.send(`
-     <html>
-       <head>
-         <title>$timestamp</title>
-       </head>
-       <body>
-         <div>${error}</div>
-         <script>
-           setTimeout(function() {
-             location.reload();
-           }, 5000);
-         </script>
-       </body>
-     </html>
-     `);
+     res.send(`ERROR: ${error}`);
   });
 })
 
