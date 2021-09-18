@@ -3,6 +3,7 @@ const app = express()
 const port = 80
 
 const PiCamera = require('pi-camera');
+const { nextTick } = require('process');
 const myCamera = new PiCamera({
   mode: 'photo',
   width: 3840,
@@ -12,6 +13,11 @@ const myCamera = new PiCamera({
 });
 
 var lastResult = undefined;
+
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store');
+  next();
+})
 
 app.get('/', (req, res) => {
   const timestamp = new Date().toLocaleString();
@@ -42,19 +48,28 @@ app.get('/', (req, res) => {
           </div>
           <script>
             async function handleResponse(response) {
-              const data = await response.text();
-              //console.log(data);
-              if (!data.startsWith('ERROR')) {
-                labelTime.innerText = new Date().toLocaleString();
-                imgCamera.src=data;
+              try {
+                const data = await response.text();
+                //console.log(data);
+                if (data.startsWith('ERROR')) {
+                  console.error(new Date().toLocaleString(), 'Server error', data);
+                } else {
+                  labelTime.innerText = new Date().toLocaleString();
+                  imgCamera.src=data;
+                }
+              } catch (e) {
+                console.error(new Date().toLocaleString(), 'Set camera data', e);
               }
             }
             let refreshCamera = async function() {
               while (true) {
                 try {
-                  let response = await fetch('/camera');
-                  handleResponse(response);
+                  let url = '/camera?t='+encodeURIComponent(new Date());
+                  console.log(new Date().toLocaleString(), 'Requesting...', url);
+                  let response = await fetch(url);
+                  await handleResponse(response);
                 } catch (e) {
+                  console.error(new Date().toLocaleString(), 'Fetch exception', e);
                 }
               }
             };
@@ -66,17 +81,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/camera', (req, res) => {
-  const timestamp = new Date();
-  console.log(timestamp, 'Taking a picture!');
+  console.log(new Date().toLocaleString(), 'Taking a picture!');
   myCamera.snapDataUrl()
   .then((result) => {
     // Your picture was captured
     lastResult = result;
     res.send(result);
+    console.log(new Date().toLocaleString(), 'Sent picture');
   })
   .catch((error) => {
      // Handle your error
-     console.log('had an error', error);
+     console.log(new Date().toLocaleString(), 'Had an error', error);
      if (lastResult) {
        res.send(lastResult);
      } else {
@@ -86,5 +101,5 @@ app.get('/camera', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(new Date().toLocaleString(), `RPI Camera listening at http://localhost:${port}`)
 })
