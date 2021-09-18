@@ -19,6 +19,8 @@ sudo nodemon app.js
 
 * [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/)
 
+* [HQ Setup Video](https://www.youtube.com/watch?v=3S1MQM8B-DU)
+
 * [Raspberry PI 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) - More power to handle all the pixels
 
 ## Required Software
