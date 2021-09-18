@@ -37,6 +37,26 @@ sudo nodemon app.js
 ifconfig
 ```
 
+## Running at boot
+
+* Open up the crontab:
+
+```
+sudo crontab -e
+```
+
+* Add this to your crontab:
+
+```
+@reboot nodemon /home/pi/Public/Rpi_NodeCamera/app.js
+```
+
+* Reboot
+
+```
+sudo shutdown -r now
+```
+
 ## Required Hardware
 
 * [Raspberry Pi High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/)
