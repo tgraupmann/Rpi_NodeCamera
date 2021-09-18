@@ -2,12 +2,15 @@ const express = require('express')
 const app = express()
 const port = 80
 
+const width = 4056;
+const height = 3040;
+
 const PiCamera = require('pi-camera');
 const { nextTick } = require('process');
 const myCamera = new PiCamera({
   mode: 'photo',
-  width: 4056,
-  height: 3040,
+  width: width,
+  height: height,
   nopreview: true,
   t: 20, //Small delay to take next picture
 });
@@ -42,7 +45,7 @@ app.get('/', (req, res) => {
           </style>
         </head>
         <body>
-          <img class="section" id="imgCamera" height="3040">
+          <img class="section" id="imgCamera" height="${height}">
           <div class="section info">
             <span>RPI Camera</span>
             <span id="labelTime">${timestamp}</span>
