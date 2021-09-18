@@ -1,6 +1,8 @@
 # Rpi_NodeCamera
 A NodeJS application for capturing and rendering camera images without saving to disk
 
+![image_1](images/image_1.png)
+
 ## Running
 
 * Start with NodeJS
