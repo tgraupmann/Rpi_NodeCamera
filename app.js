@@ -38,8 +38,8 @@ app.get('/', (req, res) => {
             let refreshCamera = async function() {
               while (true) {
                 try {
-                let response = await fetch('/camera');
-                handleResponse(response);
+                  let response = await fetch('/camera');
+                  handleResponse(response);
                 } catch (e) {
                 }
               }
