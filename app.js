@@ -5,8 +5,8 @@ const port = 80
 const PiCamera = require('pi-camera');
 const myCamera = new PiCamera({
   mode: 'photo',
-  width: 1920,
-  height: 1080,
+  width: 3840,
+  height: 2160,
   nopreview: true,
   t: 20, //Small delay to take next picture
 });
@@ -14,18 +14,32 @@ const myCamera = new PiCamera({
 var lastResult = undefined;
 
 app.get('/', (req, res) => {
-  const timestamp = new Date();
+  const timestamp = new Date().toLocaleString();
   res.send(`
       <html>
         <head>
           <title>RPI Camera</title>
+          <style>
+            .section {
+              position: absolute;
+              top: 0px;
+              left: 0px;
+            }
+            .info {
+              background-color: #00000088;
+              font-size: 4em;
+              color: white;
+              margin: 20px;
+              padding: 20px;
+            }
+          </style>
         </head>
         <body>
-          <div>
+          <img class="section" id="imgCamera" height="2160">
+          <div class="section info">
             <span>RPI Camera</span>
             <span id="labelTime">${timestamp}</span>
           </div>
-          <img id="imgCamera" width="1920">
           <script>
             async function handleResponse(response) {
               const data = await response.text();
