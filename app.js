@@ -8,8 +8,10 @@ const myCamera = new PiCamera({
   width: 1920,
   height: 1080,
   nopreview: true,
-  t: 15, //Small delay to take next picture
+  t: 20, //Small delay to take next picture
 });
+
+var lastResult = undefined;
 
 app.get('/', (req, res) => {
   const timestamp = new Date();
@@ -49,12 +51,17 @@ app.get('/camera', (req, res) => {
   myCamera.snapDataUrl()
   .then((result) => {
     // Your picture was captured
+    lastResult = result;
     res.send(result);
   })
   .catch((error) => {
      // Handle your error
      console.log('had an error', error);
-     res.send(`ERROR: ${error}`);
+     if (lastResult) {
+       res.send(lastResult);
+     } else {
+      res.send(`ERROR: ${error}`);
+     }
   });
 })
 
