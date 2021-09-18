@@ -66,7 +66,7 @@ app.get('/', (req, res) => {
               while (true) {
                 try {
                   let url = '/camera?t='+encodeURIComponent(new Date());
-                  console.log(new Date().toLocaleString(), 'Requesting...', url);
+                  //console.log(new Date().toLocaleString(), 'Requesting...', url);
                   let response = await fetch(url);
                   await handleResponse(response);
                 } catch (e) {
