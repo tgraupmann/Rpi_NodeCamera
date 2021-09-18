@@ -15,6 +15,7 @@ const myCamera = new PiCamera({
 var lastResult = undefined;
 
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.set('Cache-Control', 'no-store');
   next();
 })
