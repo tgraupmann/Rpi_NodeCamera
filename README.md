@@ -118,7 +118,7 @@ npm install pi-camera
 
 * [PI camera usage](https://www.raspberrypi.org/documentation/accessories/camera.html)
 
-* To add time support for the pi-camera module, clone within node_modules.
+* To add time support for the pi-camera module, clone within node_modules. Use [My Fork](https://github.com/tgraupmann/pi-camera/)
 
 ```
 cd node_modules
