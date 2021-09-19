@@ -74,6 +74,18 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
 sudo apt install nodejs
 ```
 
+* [Turn off the camera LED for Raspberry Pi](https://howtoraspberrypi.com/disable-led-camera-pi/)
+
+```
+sudo vi /boot/config.txt
+```
+
+* Disable the LED light on the RPI camera
+
+```
+disable_camera_led=1
+```
+
 ## Useful Tools
 
 * [Visual Studio Code on Raspberry Pi](https://code.visualstudio.com/docs/setup/raspberry-pi)
