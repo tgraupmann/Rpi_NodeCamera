@@ -80,7 +80,7 @@ sudo apt install nodejs
 sudo vi /boot/config.txt
 ```
 
-* Disable the LED light on the RPI camera
+* Disable the LED light on the RPI camera. Add to the end of the file.
 
 ```
 disable_camera_led=1
