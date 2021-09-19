@@ -12,7 +12,8 @@ const myCamera = new PiCamera({
   width: width,
   height: height,
   nopreview: true,
-  t: 20, //Small delay to take next picture
+  exposure: "auto",
+  t: 100, //Small delay to take next picture
 });
 
 var lastResult = undefined;
