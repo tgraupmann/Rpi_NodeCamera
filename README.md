@@ -65,14 +65,7 @@ sudo shutdown -r now
 
 * [Raspberry PI 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) - More power to handle all the pixels
 
-## Required Software
-
-* [NodeJS and NPM](https://linuxize.com/post/how-to-install-node-js-on-raspberry-pi/)
-
-```
-curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-sudo apt install nodejs
-```
+## Hardware Setup
 
 * [Turn off the camera LED for Raspberry Pi](https://howtoraspberrypi.com/disable-led-camera-pi/)
 
@@ -84,6 +77,15 @@ sudo vi /boot/config.txt
 
 ```
 disable_camera_led=1
+```
+
+## Required Software
+
+* [NodeJS and NPM](https://linuxize.com/post/how-to-install-node-js-on-raspberry-pi/)
+
+```
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+sudo apt install nodejs
 ```
 
 ## Useful Tools
