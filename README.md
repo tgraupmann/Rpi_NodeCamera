@@ -109,5 +109,7 @@ npm install pi-camera
 * To add time support for the pi-camera module, clone within node_modules.
 
 ```
+cd node_modules
+rm -r -f pi-camera
 git clone https://github.com/tgraupmann/pi-camera/
 ```
