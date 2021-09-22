@@ -48,7 +48,7 @@ sudo crontab -e
 * Add this to your crontab:
 
 ```
-@reboot nodemon /home/pi/Public/Rpi_NodeCamera/app.js
+@reboot sudo nodemon /home/pi/Public/Rpi_NodeCamera/app.js
 ```
 
 * Reboot
