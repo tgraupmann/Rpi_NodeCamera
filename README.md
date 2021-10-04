@@ -113,6 +113,12 @@ sudo npm install -g nodemon
 npm install express
 ```
 
+* [node-fetch](https://www.npmjs.com/package/node-fetch)
+
+```
+npm install node-fetch
+```
+
 * [pi-camera](https://www.npmjs.com/package/pi-camera) - [Source](https://github.com/stetsmando/pi-camera)
 ```
 npm install pi-camera
