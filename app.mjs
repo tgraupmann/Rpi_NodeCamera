@@ -1,19 +1,22 @@
-const express = require('express')
+import express from 'express';
+import fetch from 'node-fetch';
+
 const app = express()
 const port = 80
 
 const width = 4056;
 const height = 3040;
 
-const PiCamera = require('pi-camera');
-const { nextTick } = require('process');
+import PiCamera from 'pi-camera';
+import process from 'process';
+const { nextTick } = process.nextTick;
 const myCamera = new PiCamera({
   mode: 'photo',
   width: width,
   height: height,
   nopreview: true,
   exposure: "night",
-  t: 500,
+  t: 500, //Small delay to take next picture
 });
 
 var lastResult = undefined;
@@ -22,6 +25,18 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.set('Cache-Control', 'no-store');
   next();
+})
+
+app.get('/proxy', async (req, res) => {
+  try {
+    let url = 'http://google.com'; //URL to proxy
+    let response = await fetch(url);
+    let text = await response.text();
+    res.send(text);
+  } catch (e) {
+    console.error(new Date().toLocaleString(), 'Fetch exception', e);
+    res.send('Fetch exception');
+  }
 })
 
 app.get('/', (req, res) => {
@@ -82,27 +97,27 @@ app.get('/', (req, res) => {
           </script>
         </body>
       </html>
-      `);  
+      `);
 })
 
 app.get('/camera', (req, res) => {
   console.log(new Date().toLocaleString(), 'Taking a picture!');
   myCamera.snapDataUrl()
-  .then((result) => {
-    // Your picture was captured
-    lastResult = result;
-    res.send(result);
-    console.log(new Date().toLocaleString(), 'Sent picture');
-  })
-  .catch((error) => {
-     // Handle your error
-     console.log(new Date().toLocaleString(), 'Had an error', error);
-     if (lastResult) {
-       res.send(lastResult);
-     } else {
-      res.send(`ERROR: ${error}`);
-     }
-  });
+    .then((result) => {
+      // Your picture was captured
+      lastResult = result;
+      res.send(result);
+      console.log(new Date().toLocaleString(), 'Sent picture');
+    })
+    .catch((error) => {
+      // Handle your error
+      console.log(new Date().toLocaleString(), 'Had an error', error);
+      if (lastResult) {
+        res.send(lastResult);
+      } else {
+        res.send(`ERROR: ${error}`);
+      }
+    });
 })
 
 app.listen(port, () => {
